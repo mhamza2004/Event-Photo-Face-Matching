@@ -1,9 +1,10 @@
 import os
 import cv2
+import insightface
 
 from insightface.app import FaceAnalysis
 
-MODEL_ROOT = os.path.abspath("models")
+MODEL_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../models"))
 
 
 class FaceEngine:
@@ -16,7 +17,7 @@ class FaceEngine:
             root=MODEL_ROOT,
             providers=["CPUExecutionProvider"],
         )
-
+        # Downloads model automatically if missing
         self.app.prepare(
             ctx_id=-1,
             det_size=(640, 640),
