@@ -118,12 +118,9 @@ animation:fadeUp .7s ease;
     border:1px solid #bfdbfe;
 }
 
-.auth-card button{
-
-width:100%;
-
-margin-top:10px;
-
+.primary-btn{
+    width:100%;
+    margin-top:10px;
 }
 
 .auth-card a{
@@ -172,7 +169,7 @@ transform:none;
 
 .password-wrapper input{
     width:100%;
-    padding-right:52px;
+    padding-right:56px;
 }
 
 .password-toggle{
@@ -187,8 +184,13 @@ transform:none;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:4px;
-    transition:.25s;
+
+    width:auto;
+    height:auto;
+    margin:0;
+    padding:6px;
+    z-index:2;
+    flex-shrink:0;
 }
 
 .password-toggle:hover{
