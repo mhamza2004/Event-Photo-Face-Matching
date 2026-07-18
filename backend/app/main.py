@@ -6,6 +6,9 @@ from app.api.auth import router as auth_router
 from app.api.event import router as event_router
 from app.api.photo import router as photo_router
 from app.api.match import router as match_router
+import os
+
+os.makedirs("uploads", exist_ok=True)
 
 app = FastAPI(
     title="Event Photo Face-Matching API",
