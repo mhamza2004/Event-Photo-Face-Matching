@@ -1,9 +1,13 @@
 from fastapi import APIRouter, Depends, File, UploadFile
+from typing import List
 from sqlalchemy.orm import Session
 
 from app.db.database import get_db
 from app.schemas.photo import PhotoResponse
-from app.services.photo_service import PhotoService
+from app.services.photo_service import (
+    PhotoService,
+    UPLOAD_PROGRESS,
+)
 
 router = APIRouter(
     prefix="/photos",
@@ -21,6 +25,18 @@ def upload_photo(
         db=db,
         event_id=event_id,
         file=file,
+    )
+
+@router.post("/upload-bulk")
+def upload_bulk(
+    event_id: int,
+    files: List[UploadFile] = File(...),
+    db: Session = Depends(get_db),
+):
+    return PhotoService.upload_bulk(
+        db=db,
+        event_id=event_id,
+        files=files,
     )
 
 @router.get(
@@ -44,4 +60,16 @@ def delete_photo(
     return PhotoService.delete_photo(
         db=db,
         photo_id=photo_id,
+    )
+
+@router.get("/upload-progress/{event_id}")
+def upload_progress(event_id: int):
+
+    return UPLOAD_PROGRESS.get(
+        event_id,
+        {
+            "status": "idle",
+            "processed": 0,
+            "total": 0,
+        },
     )

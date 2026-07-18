@@ -13,6 +13,7 @@ class FaceEmbeddingService:
         photo_id: int,
         embedding,
         bbox,
+        commit: bool = True,
     ):
         face_embedding = FaceEmbedding(
             photo_id=photo_id,
@@ -26,6 +27,7 @@ class FaceEmbeddingService:
         return FaceEmbeddingRepository.create(
             db,
             face_embedding,
+            commit=commit,
         )
 
     @staticmethod

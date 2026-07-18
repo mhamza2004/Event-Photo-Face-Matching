@@ -56,14 +56,19 @@ function EventList({
 
         <div>
 
-            <h2
-                style={{
-                    marginBottom: 30,
-                }}
-            >
-                <FaImages />{" "}
-                Your Events
-            </h2>
+            <div className="events-header">
+                <div>
+                    <p className="events-subtitle">AI Event Workspace</p>
+                    <h1 className="events-title">
+                        <FaImages />
+                        Your Events
+                    </h1>
+                </div>
+
+                <span className="events-badge">
+                    {events.length} {events.length === 1 ? "Event" : "Events"}
+                </span>
+            </div>
 
             {
 
@@ -86,42 +91,31 @@ function EventList({
                             key={event.id}
                         >
 
-                            <h2>
-                                {event.title}
-                            </h2>
+                            <div className="event-info">
 
-                            <p>
-                                {event.description}
-                            </p>
+                                <h2 className="event-title">
+                                    {event.title}
+                                </h2>
 
-                            <div
-                                style={{
-                                    display: "flex",
-                                    gap: 20,
-                                    flexWrap: "wrap",
-                                    marginTop: 15,
-                                    marginBottom: 20,
-                                    color: "#475569",
-                                }}
-                            >
+                                <p className="event-description">
+                                    {event.description}
+                                </p>
 
-                                <span>
+                            </div>
 
-                                    <FaMapMarkerAlt />{" "}
+                            <div className="event-meta">
 
-                                    {event.location}
+                                <div className="event-meta-item">
+                                    <FaMapMarkerAlt />
+                                    <span>{event.location}</span>
+                                </div>
 
-                                </span>
-
-                                <span>
-
-                                    <FaCalendarAlt />{" "}
-
-                                    {new Date(
-                                        event.event_date
-                                    ).toLocaleDateString()}
-
-                                </span>
+                                <div className="event-meta-item">
+                                    <FaCalendarAlt />
+                                    <span>
+                                        {new Date(event.event_date).toLocaleDateString()}
+                                    </span>
+                                </div>
 
                             </div>
 

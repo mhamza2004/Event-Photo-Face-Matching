@@ -9,11 +9,28 @@ class PhotoRepository:
     def create(
         db: Session,
         photo: Photo,
+        commit: bool = True,
     ):
         db.add(photo)
-        db.commit()
-        db.refresh(photo)
+
+        if commit:
+            db.commit()
+            db.refresh(photo)
+
         return photo
+
+    @staticmethod
+    def commit(
+        db: Session,
+    ):
+        db.commit()
+
+    @staticmethod
+    def refresh(
+        db: Session,
+        photo: Photo,
+    ):
+        db.refresh(photo)
 
     @staticmethod
     def get_by_event(

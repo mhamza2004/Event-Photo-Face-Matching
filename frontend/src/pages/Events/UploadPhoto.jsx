@@ -5,25 +5,28 @@ import api from "../../services/api";
 
 function UploadPhoto({ eventId, onUploadSuccess }) {
 
-    const [file, setFile] = useState(null);
+    const [files, setFiles] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const upload = async () => {
 
-        if (!file) {
-            toast.warning("Please select an image.");
-            return;
+        if (files.length === 0) {
+        toast.warning("Please select image(s) or a ZIP file.");
+        return;
         }
 
         const formData = new FormData();
-        formData.append("file", file);
+
+        files.forEach((file) => {
+            formData.append("files", file);
+        });
 
         setLoading(true);
 
         try {
 
             await api.post(
-                `/photos/upload?event_id=${eventId}`,
+                `/photos/upload-bulk?event_id=${eventId}`,
                 formData,
                 {
                     headers:{
@@ -32,9 +35,9 @@ function UploadPhoto({ eventId, onUploadSuccess }) {
                 }
             );
 
-            toast.success("Photo Uploaded Successfully");
+            toast.success("Photos uploaded successfully.");
 
-            setFile(null);
+            setFiles([]);
 
             if(onUploadSuccess){
                 onUploadSuccess();
@@ -67,24 +70,39 @@ function UploadPhoto({ eventId, onUploadSuccess }) {
 
             </div>
 
-            <input
-                className="file-input"
-                type="file"
-                onChange={(e)=>setFile(e.target.files[0])}
-            />
+            <div className="upload-zone">
 
-            {file &&
+                <div className="upload-icon">
+                    <FaCloudUploadAlt />
+                </div>
 
-                <p
-                    style={{
-                        marginTop:10,
-                    }}
-                >
-                    {file.name}
+                <h3>Upload Event Photos</h3>
+
+                <p>
+                    Select JPG, PNG or ZIP files to upload for face recognition.
                 </p>
 
+                <input
+                    className="file-input"
+                    type="file"
+                    multiple
+                    accept=".jpg,.jpeg,.png,.zip"
+                    onChange={(e) => setFiles([...e.target.files])}
+                />
+
+            </div>
+
+            {
+                files.length > 0 && (
+                    <div className="selected-files">
+                        <span className="selected-count">
+                            📁 {files.length} file{files.length > 1 ? "s" : ""} selected
+                        </span>
+                    </div>
+                )
             }
 
+            
             <div className="action-buttons">
 
                 <button

@@ -69,40 +69,52 @@ function CreateEvent({ onCreated }) {
 
             </div>
 
-            <form onSubmit={submit}>
+            <form onSubmit={submit} className="event-form">
 
-                <input
-                    name="title"
-                    placeholder="Event Title"
-                    value={form.title}
-                    onChange={changeHandler}
-                    required
-                />
+                <div className="form-group">
+                    <label>Event Title</label>
+                    <input
+                        name="title"
+                        placeholder="Enter event title"
+                        value={form.title}
+                        onChange={changeHandler}
+                        required
+                    />
+                </div>
 
-                <textarea
-                    rows="4"
-                    name="description"
-                    placeholder="Event Description"
-                    value={form.description}
-                    onChange={changeHandler}
-                    required
-                />
+                <div className="form-group">
+                    <label>Description</label>
+                    <textarea
+                        rows="4"
+                        name="description"
+                        placeholder="Write a short description..."
+                        value={form.description}
+                        onChange={changeHandler}
+                        required
+                    />
+                </div>
 
-                <input
-                    name="location"
-                    placeholder="Event Location"
-                    value={form.location}
-                    onChange={changeHandler}
-                    required
-                />
+                <div className="form-group">
+                    <label>Location</label>
+                    <input
+                        name="location"
+                        placeholder="Enter event location"
+                        value={form.location}
+                        onChange={changeHandler}
+                        required
+                    />
+                </div>
 
-                <input
-                    type="datetime-local"
-                    name="event_date"
-                    value={form.event_date}
-                    onChange={changeHandler}
-                    required
-                />
+                <div className="form-group">
+                    <label>Date & Time</label>
+                    <input
+                        type="datetime-local"
+                        name="event_date"
+                        value={form.event_date}
+                        onChange={changeHandler}
+                        required
+                    />
+                </div>
 
                 <div className="action-buttons">
 

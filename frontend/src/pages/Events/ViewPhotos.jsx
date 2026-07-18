@@ -58,9 +58,14 @@ function ViewPhotos({ eventId, refresh }) {
 
         <>
 
-            <div
-                className="photo-grid"
-            >
+            <div className="gallery-section">
+
+                <div className="gallery-header">
+                    <h3>Event Gallery</h3>
+                    <span>{photos.length} Photos</span>
+                </div>
+
+                <div className="photo-grid">
 
                 {
 
@@ -90,6 +95,8 @@ function ViewPhotos({ eventId, refresh }) {
                     ))
 
                 }
+
+                </div>
 
             </div>
 

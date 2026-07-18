@@ -4,12 +4,14 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../../services/api";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Register() {
 
     const navigate = useNavigate();
 
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const [form, setForm] = useState({
 
@@ -85,78 +87,89 @@ function Register() {
 
             <div className="auth-card">
 
-                <h1>📸 Event Photo Face Matching</h1>
+                <span className="auth-badge">
+                    AI Face Recognition
+                </span>
 
-                <p>Create Your Account</p>
+                <h1>Create Account</h1>
 
-                <form onSubmit={submit}>
+                <p>
+                    Create your account to start managing events and AI-powered photo recognition.
+                </p>
 
-                    <input
+                <form onSubmit={submit} className="auth-form">
 
-                        type="text"
+                    <div className="form-group">
+                        <label>Full Name</label>
 
-                        name="full_name"
+                        <input
+                            type="text"
+                            name="full_name"
+                            placeholder="Enter your full name"
+                            value={form.full_name}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
 
-                        placeholder="Full Name"
+                    <div className="form-group">
+                        <label>Email Address</label>
 
-                        value={form.full_name}
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            value={form.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
 
-                        onChange={handleChange}
+                    <div className="form-group">
 
-                        required
+                        <label>Password</label>
 
-                    />
+                        <div className="password-wrapper">
 
-                    <input
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                placeholder="Create a password"
+                                value={form.password}
+                                onChange={handleChange}
+                                required
+                            />
 
-                        type="email"
+                            <button
+                                type="button"
+                                className="password-toggle"
+                                onClick={() => setShowPassword(!showPassword)}
+                                aria-label={
+                                    showPassword
+                                        ? "Hide password"
+                                        : "Show password"
+                                }
+                            >
+                                {
+                                    showPassword
+                                        ? <FaEyeSlash />
+                                        : <FaEye />
+                                }
+                            </button>
 
-                        name="email"
+                        </div>
 
-                        placeholder="Email"
-
-                        value={form.email}
-
-                        onChange={handleChange}
-
-                        required
-
-                    />
-
-                    <input
-
-                        type="password"
-
-                        name="password"
-
-                        placeholder="Password"
-
-                        value={form.password}
-
-                        onChange={handleChange}
-
-                        required
-
-                    />
+                    </div>
 
                     <button
                         type="submit"
+                        className="primary-btn"
                     >
-
                         {
-
                             loading
-
-                                ?
-
-                                "Creating Account..."
-
-                                :
-
-                                "Register"
-
+                                ? "Creating Account..."
+                                : "Create Account"
                         }
-
                     </button>
 
                 </form>

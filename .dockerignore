@@ -1,0 +1,13 @@
+.git
+.gitignore
+.vscode
+backend/venv
+backend/__pycache__
+backend/.pytest_cache
+backend/uploads
+frontend
+screenshots
+*.pyc
+*.pyo
+*.pyd
+.env

@@ -102,37 +102,38 @@ function MatchSelfie({ eventId }) {
 
             </div>
 
-            <input
+            <div className="upload-zone">
 
-                className="file-input"
+                <div className="upload-icon">
+                    <FaUserCircle />
+                </div>
 
-                type="file"
+                <h3>Upload Your Selfie</h3>
 
-                onChange={(e)=>setFile(e.target.files[0])}
+                <p>
+                    Select a clear selfie and let AI find your event photos.
+                </p>
 
-            />
+                <input
+                    className="file-input"
+                    type="file"
+                    onChange={(e)=>setFile(e.target.files[0])}
+                />
+
+            </div>
 
             {
 
                 file &&
 
-                <p
-                    style={{
-                        marginTop:12,
-                    }}
-                >
+                <div className="selected-files">
 
-                    <FaUserCircle/>
-
-                    {" "}
-
-                    <strong>
-
+                    <span className="selected-count">
+                        <FaUserCircle />
                         {file.name}
+                    </span>
 
-                    </strong>
-
-                </p>
+                </div>
 
             }
 
@@ -166,11 +167,17 @@ function MatchSelfie({ eventId }) {
 
                 matches.length>0 &&
 
-                <div
-                    style={{
-                        marginTop:25,
-                    }}
-                >
+                <div className="gallery-section">
+
+                <div className="gallery-header">
+
+                <h3>AI Search Results</h3>
+
+                <span>
+                    {matches.length} Match{matches.length > 1 ? "es" : ""}
+                </span>
+
+                </div>
 
                     {
 
@@ -200,52 +207,31 @@ function MatchSelfie({ eventId }) {
 
                                 </div>
 
-                                <div
-                                    className="confidence-bar"
-                                >
+                                <div className="confidence-bar">
 
                                     <div
-
                                         className="confidence-fill"
-
                                         style={{
-
-                                            width:`${(
-
-                                                photo.similarity*100
-
-                                            ).toFixed(0)}%`
-
+                                            width: `${(photo.similarity * 100).toFixed(0)}%`
                                         }}
-
                                     />
 
                                 </div>
 
-                                <p>
+                                <div className="confidence-info">
 
-                                    Confidence
+                                    <span>AI Confidence</span>
 
-                                    <strong>
+                                    <span className="confidence-score">
+                                        {(photo.similarity * 100).toFixed(2)}%
+                                    </span>
 
-                                        {" "}
-
-                                        {(
-
-                                            photo.similarity*100
-
-                                        ).toFixed(2)}%
-
-                                    </strong>
-
-                                </p>
+                                </div>
 
                                 <img
-
+                                    className="match-image"
                                     src={`http://127.0.0.1:8000/${photo.image_path}`}
-
-                                    alt="Matched"
-
+                                    alt="Matched Face"
                                 />
 
                             </div>

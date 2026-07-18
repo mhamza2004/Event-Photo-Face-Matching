@@ -42,27 +42,26 @@ function DeleteEvent({ eventId, onDelete }) {
 
     return (
 
-        <button
-            className="danger-btn"
-            onClick={deleteEvent}
-            disabled={loading}
-        >
+        <div className="delete-section">
 
-            <FaTrashAlt />
+            <div className="delete-content">
+                <h3>Delete Event</h3>
+                <p>
+                    This action permanently removes the event, all uploaded photos,
+                    and associated face embeddings.
+                </p>
+            </div>
 
-            {" "}
+            <button
+                className="danger-btn"
+                onClick={deleteEvent}
+                disabled={loading}
+            >
+                <FaTrashAlt />
+                {loading ? " Deleting..." : " Delete Event"}
+            </button>
 
-            {
-
-                loading
-
-                    ? "Deleting..."
-
-                    : "Delete Event"
-
-            }
-
-        </button>
+        </div>
 
     );
 

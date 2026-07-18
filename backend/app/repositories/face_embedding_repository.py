@@ -9,11 +9,21 @@ class FaceEmbeddingRepository:
     def create(
         db: Session,
         face_embedding: FaceEmbedding,
+        commit: bool = True,
     ):
         db.add(face_embedding)
-        db.commit()
-        db.refresh(face_embedding)
+
+        if commit:
+            db.commit()
+            db.refresh(face_embedding)
+
         return face_embedding
+
+    @staticmethod
+    def commit(
+        db: Session,
+    ):
+        db.commit()
 
     @staticmethod
     def get_all(

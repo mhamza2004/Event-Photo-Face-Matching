@@ -4,7 +4,6 @@ from sqlalchemy.sql import func
 
 from app.db.database import Base
 
-
 class Photo(Base):
     __tablename__ = "photos"
 
@@ -16,7 +15,10 @@ class Photo(Base):
 
     event_id = Column(
         Integer,
-        ForeignKey("events.id"),
+        ForeignKey(
+            "events.id",
+            ondelete="CASCADE",
+        ),
         nullable=False,
     )
 

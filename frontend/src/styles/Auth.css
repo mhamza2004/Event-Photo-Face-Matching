@@ -88,23 +88,34 @@ animation:fadeUp .7s ease;
 }
 
 .auth-card h1{
-
-font-size:31px;
-
-text-align:center;
-
-color:#1e3a8a;
-
-margin-bottom:10px;
-
+    font-size:40px;
+    font-weight:800;
+    color:#0f172a;
+    margin-bottom:14px;
+    letter-spacing:-1px;
 }
 
-.auth-card p{
+.auth-card>p{
+    max-width:330px;
+    margin:0 auto 32px;
+    color:#64748b;
+    line-height:1.7;
+    font-size:15px;
+    text-align:center;
+}
 
-text-align:center;
-
-margin-bottom:25px;
-
+.auth-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:8px 16px;
+    border-radius:999px;
+    background:#eff6ff;
+    color:#2563eb;
+    font-size:13px;
+    font-weight:700;
+    margin:0 auto 20px;
+    border:1px solid #bfdbfe;
 }
 
 .auth-card button{
@@ -149,4 +160,42 @@ transform:none;
 
 }
 
+}
+
+/* ================= PASSWORD TOGGLE ================= */
+
+.password-wrapper{
+    position:relative;
+    display:flex;
+    align-items:center;
+}
+
+.password-wrapper input{
+    width:100%;
+    padding-right:52px;
+}
+
+.password-toggle{
+    position:absolute;
+    right:16px;
+    top:50%;
+    transform:translateY(-50%);
+    border:none;
+    background:transparent;
+    cursor:pointer;
+    color:#64748b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:4px;
+    transition:.25s;
+}
+
+.password-toggle:hover{
+    color:#2563eb;
+}
+
+.password-toggle svg{
+    width:18px;
+    height:18px;
 }

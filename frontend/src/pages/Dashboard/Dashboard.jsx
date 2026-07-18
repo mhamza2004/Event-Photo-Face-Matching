@@ -23,81 +23,55 @@ function Dashboard() {
 
         <div className="dashboard">
 
-            <div className="dashboard-header">
+            <div className="dashboard-hero">
 
-                <div>
+                <div className="hero-left">
+
+                    <span className="hero-badge">
+                        AI Face Recognition Platform
+                    </span>
 
                     <h1>
-                        📸 Event Photo Face Matching
+                        Event Photo Face Matching
                     </h1>
 
                     <p>
-                        AI Powered Event Gallery
+                        Upload event photos, organize galleries, and instantly find matching faces using AI-powered recognition.
                     </p>
 
                 </div>
 
-                <LogoutButton />
+                <div className="hero-right">
+
+                    <LogoutButton />
+
+                </div>
 
             </div>
-
             <div className="stats-grid">
 
                 <div className="stat-card">
-
-                    <FaImages
-                        size={28}
-                    />
-
+                    <FaImages />
                     <h2>Events</h2>
-
-                    <p>
-                        Organize &
-                        Manage
-                    </p>
-
+                    <p>Manage your AI-powered event galleries</p>
                 </div>
 
                 <div className="stat-card">
-
-                    <FaCamera
-                        size={28}
-                    />
-
+                    <FaCamera />
                     <h2>Photos</h2>
-
-                    <p>
-                        AI Indexed
-                    </p>
-
+                    <p>Upload and organize event memories</p>
                 </div>
 
                 <div className="stat-card">
-
-                    <FaRobot
-                        size={28}
-                    />
-
-                    <h2>AI Search</h2>
-
-                    <p>
-                        InsightFace
-                    </p>
-
+                    <FaRobot />
+                    <h2>AI Matching</h2>
+                    <p>Instant facial recognition powered by AI</p>
                 </div>
 
                 <div className="stat-card">
-
-                    <FaUserCircle
-                        size={28}
-                    />
-
-                    <h2>User</h2>
-
-                    <p>
-                        Logged In
-                    </p>
-
+                    <FaUserCircle />
+                    <h2>Account</h2>
+                    <p>Secure authenticated workspace</p>
                 </div>
 
             </div>
