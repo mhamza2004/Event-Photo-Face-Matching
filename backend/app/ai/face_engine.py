@@ -13,14 +13,14 @@ class FaceEngine:
         print("Loading InsightFace model...")
 
         self.app = FaceAnalysis(
-            name="buffalo_l",
+            name="buffalo_s",
             root=MODEL_ROOT,
             providers=["CPUExecutionProvider"],
         )
         # Downloads model automatically if missing
         self.app.prepare(
             ctx_id=-1,
-            det_size=(640, 640),
+            det_size=(320, 320),
         )
 
         print("✅ InsightFace loaded successfully!")
