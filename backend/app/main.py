@@ -28,8 +28,8 @@ Base.metadata.create_all(bind=engine)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-    "http://localhost:5173",
-    "https://https://event-photo-face-matching-15yjqhw2e-muhammad-hamza2.vercel.app",
+        "http://localhost:5173",
+        "https://event-photo-face-matching-15yjqhw2e-muhammad-hamza2.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
