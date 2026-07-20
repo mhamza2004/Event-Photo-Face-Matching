@@ -2,6 +2,14 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.db.database import Base, engine
+
+# Import all models so SQLAlchemy registers them
+from app.models.user import User
+from app.models.event import Event
+from app.models.photo import Photo
+from app.models.face_embedding import FaceEmbedding
+
 from app.api.auth import router as auth_router
 from app.api.event import router as event_router
 from app.api.photo import router as photo_router
@@ -14,6 +22,7 @@ app = FastAPI(
     title="Event Photo Face-Matching API",
     version="1.0.0"
 )
+Base.metadata.create_all(bind=engine)
 
 # Register Routers
 app.add_middleware(
