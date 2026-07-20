@@ -19,8 +19,8 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173",
-        "https://event-photo-face-matching-frontend.vercel.app",
+    "http://localhost:5173",
+    "https://event-photo-face-matching-1f3s8macv-muhammad-hamza2.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
