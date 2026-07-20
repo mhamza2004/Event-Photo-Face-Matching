@@ -29,7 +29,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
     "http://localhost:5173",
-    "https://event-photo-face-matching-1f3s8macv-muhammad-hamza2.vercel.app",
+    "https://https://event-photo-face-matching-15yjqhw2e-muhammad-hamza2.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
