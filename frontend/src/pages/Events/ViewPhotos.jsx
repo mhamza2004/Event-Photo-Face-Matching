@@ -77,16 +77,12 @@ function ViewPhotos({ eventId, refresh }) {
                         >
 
                             <img
-                                src={`http://127.0.0.1:8000/${photo.image_path}`}
+                                src={`${import.meta.env.VITE_API_URL}/${photo.image_path}`}
                                 alt=""
-                                onClick={()=>
-
+                                onClick={() =>
                                     setSelectedImage(
-
-                                        `http://127.0.0.1:8000/${photo.image_path}`
-
+                                        `${import.meta.env.VITE_API_URL}/${photo.image_path}`
                                     )
-
                                 }
                             />
 

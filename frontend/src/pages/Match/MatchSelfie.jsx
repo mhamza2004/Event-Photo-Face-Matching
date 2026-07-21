@@ -230,7 +230,7 @@ function MatchSelfie({ eventId }) {
 
                                 <img
                                     className="match-image"
-                                    src={`http://127.0.0.1:8000/${photo.image_path}`}
+                                    src={`${import.meta.env.VITE_API_URL}/${photo.image_path}`}
                                     alt="Matched Face"
                                 />
 
